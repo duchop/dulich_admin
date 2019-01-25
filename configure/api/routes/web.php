@@ -11,7 +11,6 @@
  */
 use App\Constants\ErrorCodeConst;
 use App\Constants\CommonConst;
-
 Route::get('home', 'HomeController@index');
 Route::get('tour_detail', 'TourDetailController@index');
 Route::get('hotel_detail', 'HotelDetailController@index');

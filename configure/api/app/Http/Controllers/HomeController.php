@@ -30,11 +30,8 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         try {
-            $data = $this->service->getData();
-
-            return view('index')->with($data);
+            return view('index');
         } catch (\Exception $e) {
-            return view('error')->with($data);
         }
     }
 }
