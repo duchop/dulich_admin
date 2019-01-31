@@ -21,7 +21,7 @@ class CommonConst
     const APP_LOGIN = 'login';
 
     // マイページ画面にアクセス処理
-    const APP_MYPAGE = 'mypage';
+    const HOME = 'home';
 
     // 退会アクション
     const APP_UNSUBSCRIBE = 'unsubscribe';
@@ -126,11 +126,9 @@ class CommonConst
     // 0文字チェック
     const NO_DATA = 0;
 
-    // API_PRODUCTS.UP_URL_STATUS
-    // 有効
-    const UP_URL_STATUS_0 = 0;
-    // 無効
-    const UP_URL_STATUS_1 = 1;
+    const ROLE_USER = 0;
+
+    const ROLE_ADMIN = 1;
 
     // チェックする文字タイプ(組み合わせ指定可)
     // 数字

@@ -26,7 +26,7 @@
     @yield('style')
 
 </head>
-<body id="@yield('body_id')">
+<body id="@yield('body_id')" class="@yield('body_class')">
 <div>
     @yield('content')
 </div>

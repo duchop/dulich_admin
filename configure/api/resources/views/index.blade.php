@@ -5,188 +5,177 @@
     <meta name="format-detection" content="telephone=no">
 @endsection
 
-@section('title'){!! 'Du lịch việt nam' !!}@endSection
+@section('title'){!! 'Admin - dulich' !!}@endSection
 
 @section('body_id'){!! 'page-top' !!}@endSection
 
 @section('content')
-    <nav class="navbar navbar-expand navbar-dark bg-dark static-top">
 
-        <a class="navbar-brand mr-1" href="index.html">Start Admin</a>
-
-        <button class="btn btn-link btn-sm text-white order-1 order-sm-0" id="sidebarToggle" href="#">
-            <i class="fas fa-bars"></i>
-        </button>
-
-        <!-- Navbar Search -->
-        <form class="d-none d-md-inline-block form-inline ml-auto mr-0 mr-md-3 my-2 my-md-0">
-            <div class="input-group">
-                <input type="text" class="form-control" placeholder="Search for..." aria-label="Search"
-                       aria-describedby="basic-addon2">
-                <div class="input-group-append">
-                    <button class="btn btn-primary" type="button">
-                        <i class="fas fa-search"></i>
-                    </button>
-                </div>
-            </div>
-        </form>
-
-        <!-- Navbar -->
-        <ul class="navbar-nav ml-auto ml-md-0">
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="alertsDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-bell fa-fw"></i>
-                    <span class="badge badge-danger">9+</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="alertsDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow mx-1">
-                <a class="nav-link dropdown-toggle" href="#" id="messagesDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-envelope fa-fw"></i>
-                    <span class="badge badge-danger">7</span>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="messagesDropdown">
-                    <a class="dropdown-item" href="#">Action</a>
-                    <a class="dropdown-item" href="#">Another action</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#">Something else here</a>
-                </div>
-            </li>
-            <li class="nav-item dropdown no-arrow">
-                <a class="nav-link dropdown-toggle" href="#" id="userDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-user-circle fa-fw"></i>
-                </a>
-                <div class="dropdown-menu dropdown-menu-right" aria-labelledby="userDropdown">
-                    <a class="dropdown-item" href="#">Settings</a>
-                    <a class="dropdown-item" href="#">Activity Log</a>
-                    <div class="dropdown-divider"></div>
-                    <a class="dropdown-item" href="#" data-toggle="modal" data-target="#logoutModal">Logout</a>
-                </div>
-            </li>
-        </ul>
-
-    </nav>
+    <!-- navbar -->
+    @include('navbar')
 
     <div id="wrapper">
 
         <!-- Sidebar -->
-        <ul class="sidebar navbar-nav">
-            <li class="nav-item active">
-                <a class="nav-link" href="index.html">
-                    <i class="fas fa-plane"></i>
-                    <span>Màn hình list</span>
-                </a>
-            </li>
-            <li class="nav-item dropdown">
-                <a class="nav-link dropdown-toggle" href="#" id="pagesDropdown" role="button" data-toggle="dropdown"
-                   aria-haspopup="true" aria-expanded="false">
-                    <i class="fas fa-fw fa-folder"></i>
-                    <span>Pages</span>
-                </a>
-                <div class="dropdown-menu" aria-labelledby="pagesDropdown">
-                    <h6 class="dropdown-header">Login Screens:</h6>
-                    <a class="dropdown-item" href="login.html">Login</a>
-                    <a class="dropdown-item" href="register.html">Register</a>
-                    <a class="dropdown-item" href="forgot-password.html">Forgot Password</a>
-                    <div class="dropdown-divider"></div>
-                    <h6 class="dropdown-header">Other Pages:</h6>
-                    <a class="dropdown-item" href="404.html">404 Page</a>
-                    <a class="dropdown-item" href="blank.html">Blank Page</a>
-                </div>
-            </li>
-            <li class="nav-item">
-                <a class="nav-link" href="tables.html">
-                    <i class="fas fa-fw fa-table"></i>
-                    <span>Tables</span></a>
-            </li>
-        </ul>
+        @include('sidebar')
 
         <div id="content-wrapper">
 
             <div class="container-fluid">
 
+            @if($type == 'list_hotel')
                 <!-- Breadcrumbs-->
-                <ol class="breadcrumb">
-                    <li class="breadcrumb-item">
-                        <a href="#">Dashboard</a>
-                    </li>
-                    <li class="breadcrumb-item active">Overview</li>
-                </ol>
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Màn hình list</a>
+                        </li>
+                        <li class="breadcrumb-item active">Tour</li>
+                    </ol>
 
-                <!-- DataTables Example -->
-                <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fas fa-table"></i>
-                        Data Table Example
-                    </div>
-                    <div class="card-body">
-                        <div class="table-responsive">
-                            <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
-                                <thead>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                                </thead>
-                                <tfoot>
-                                <tr>
-                                    <th>Name</th>
-                                    <th>Position</th>
-                                    <th>Office</th>
-                                    <th>Age</th>
-                                    <th>Start date</th>
-                                    <th>Salary</th>
-                                </tr>
-                                </tfoot>
-                                <tbody>
-                                <tr>
-                                    <td>Tiger Nixon</td>
-                                    <td>System Architect</td>
-                                    <td>Edinburgh</td>
-                                    <td>61</td>
-                                    <td>2011/04/25</td>
-                                    <td>$320,800</td>
-                                </tr>
-                                <tr>
-                                    <td>Donna Snider</td>
-                                    <td>Customer Support</td>
-                                    <td>New York</td>
-                                    <td>27</td>
-                                    <td>2011/01/25</td>
-                                    <td>$112,000</td>
-                                </tr>
-                                </tbody>
-                            </table>
+                    <!-- Tour -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                            List thông tin tour
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Hotel Id</th>
+                                        <th>Hotel Name</th>
+                                        <th>Hotel Address</th>
+                                        <th>Hotel Type</th>
+                                        <th>Update Datetime</th>
+                                        <th>Category Hotel</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($ary_hotels as $hotel)
+                                        <tr>
+                                            <td>{{ $hotel->hotel_id }}</td>
+                                            <td>{{ $hotel->hotel_name }}</td>
+                                            <td>{{ $hotel->address }}</td>
+                                            <td>{{ $hotel->hotel_type }} sao</td>
+                                            <td>{{ $hotel->update_datetime }}</td>
+                                            <td>{{ $hotel->getCategoryHotel->hotel_category_name }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
                         </div>
                     </div>
-                </div>
+            @elseif($type == 'list_transportation')
+                <!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Màn hình list</a>
+                        </li>
+                        <li class="breadcrumb-item active">Transportation</li>
+                    </ol>
 
-            </div>
-            <!-- /.container-fluid -->
-
-            <!-- Sticky Footer -->
-            <footer class="sticky-footer">
-                <div class="container my-auto">
-                    <div class="copyright text-center my-auto">
-                        <span>Copyright © Your Website 2018</span>
+                    <!-- Tour -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                            List thông tin transportation
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Transportation Id</th>
+                                        <th>Transportation Name</th>
+                                        <th>Address From</th>
+                                        <th>Address To</th>
+                                        <th>Update Datetime</th>
+                                        <th>Category Transportation</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($ary_transportation as $transportation)
+                                        <tr>
+                                            <td>{{ $transportation->transportation_id }}</td>
+                                            <td>{{ $transportation->transportation_name }}</td>
+                                            <td>{{ $transportation->address_from }}</td>
+                                            <td>{{ $transportation->address_to }}</td>
+                                            <td>{{ $transportation->update_datetime }}</td>
+                                            @if($transportation->transportation_category_id == 1)
+                                                <td>{{ 'Plain' }}</td>
+                                            @elseif($transportation->transportation_category_id == 2)
+                                                <td>{{ 'Bus' }}</td>
+                                            @else
+                                                <td>{{ 'Train' }}</td>
+                                            @endif
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
                     </div>
-                </div>
-            </footer>
+            @else
+                <!-- Breadcrumbs-->
+                    <ol class="breadcrumb">
+                        <li class="breadcrumb-item">
+                            <a href="#">Màn hình list</a>
+                        </li>
+                        <li class="breadcrumb-item active">Tour</li>
+                    </ol>
 
+                    <!-- Product -->
+                    <div class="card mb-3">
+                        <div class="card-header">
+                            <i class="fas fa-table"></i>
+                            List thông tin tour
+                        </div>
+                        <div class="card-body">
+                            <div class="table-responsive">
+                                <table class="table table-bordered" id="dataTable" width="100%" cellspacing="0">
+                                    <thead>
+                                    <tr>
+                                        <th>Tour Name</th>
+                                        <th>Tour Time</th>
+                                        <th>From</th>
+                                        <th>Price Promotion</th>
+                                        <th>Price</th>
+                                        <th>Category Tour</th>
+                                    </tr>
+                                    </thead>
+                                    <tbody>
+                                    @foreach($ary_tour as $tour)
+                                        <tr>
+                                            <td>{{ $tour->tour_name }}</td>
+                                            <td>{{ $tour->tour_time }}</td>
+                                            <td>{{ $tour->from }}</td>
+                                            <td>{{ $tour->price_promotion }}</td>
+                                            <td>{{ $tour->price }}</td>
+                                            <td>{{ $tour->getCategoryTour->category_name }}</td>
+                                        </tr>
+                                    @endforeach
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div>
+                    </div>
+                @endif
+            </div>
         </div>
-        <!-- /.content-wrapper -->
+
+        <!-- Sticky Footer -->
+        <footer class="sticky-footer">
+            <div class="container my-auto">
+                <div class="copyright text-center my-auto">
+                    <span>Copyright © travel Website 2019. Web developer HopDD</span>
+                </div>
+            </div>
+        </footer>
+
+    </div>
+    <!-- /.content-wrapper -->
 
     </div>
     <!-- /#wrapper -->

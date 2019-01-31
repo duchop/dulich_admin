@@ -1,8 +1,10 @@
 <?php
+
 namespace App\Http\Services;
 
 use App\Http\Models\sql\Hotel;
 use App\Http\Models\sql\Tour;
+use App\Http\Models\sql\Transportation;
 
 class HomeService extends Service
 {
@@ -18,12 +20,18 @@ class HomeService extends Service
     private $hotel;
 
     /**
+     * @var Transportation $transportation
+     */
+    private $transportation;
+
+    /**
      * Hàm khởi tạo của service
      */
     public function __construct()
     {
         $this->tour = app(Tour::class);
         $this->hotel = app(Hotel::class);
+        $this->transportation = app(Transportation::class);
     }
 
     /**
@@ -32,19 +40,19 @@ class HomeService extends Service
      * @throws \Exception
      * @throws ApiException
      */
-    public function getData()
+    public function getData($type)
     {
         try {
-
-            $data = parent::getMenuHeaderData();
-
-            $ary_daily_tour = $this->tour->getListDailyTour(6);
-
-            $ary_hotel = $this->hotel->getListHotel(6);
-
-            $data['ary_daily_tour'] = $ary_daily_tour;
-            $data['ary_hotel'] = $ary_hotel;
-
+            if ($type == 'list_hotel') {
+                $ary_hotel = $this->hotel->getListHotels();
+                $data['ary_hotels'] = $ary_hotel;
+            } elseif ($type == 'list_transportation') {
+                $ary_transportation = $this->transportation->getListTransportation();
+                $data['ary_transportation'] = $ary_transportation;
+            } else {
+                $ary_tour = $this->tour->getListTour();
+                $data['ary_tour'] = $ary_tour;
+            }
             return $data;
         } catch (\Exception $ex) {
             throw $ex;

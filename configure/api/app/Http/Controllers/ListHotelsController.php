@@ -40,7 +40,7 @@ class ListHotelsController extends Controller
             // lấy thông tin để hiển thị lên view
             $data = $this->service->getData();
 
-            return view('list_hotels')->with($data);
+            return view('list_hotel')->with($data);
         } catch (\Exception $e) {
             return view('error')->with($data);
         }

@@ -11,7 +11,8 @@
  */
 use App\Constants\ErrorCodeConst;
 use App\Constants\CommonConst;
-Route::get('home', 'HomeController@index');
+Route::get('login', 'LoginController@index');
+Route::post('login', 'LoginController@checkLogin');
 Route::get('tour_detail', 'TourDetailController@index');
 Route::get('hotel_detail', 'HotelDetailController@index');
 Route::get('transportation_detail', 'TransportationDetailController@index');
@@ -24,19 +25,12 @@ Route::post('send_mail', 'SendMailController@index');
 Route::match([
     'get',
     'post'
-], CommonConst::APP . CommonConst::APP_CHECK . '/{pass_query}', 'MaintainAppController@doAppCheck')->middleware('csrf');
-Route::group([
-    'middleware' => [
-        'web',
-        'guest'
-    ]
-], function () {
-    Route::match([
-        'get',
-        'post'
-    ], CommonConst::APP_MYPAGE, 'MypageController@createMyPage');
-    Route::post(CommonConst::APP . CommonConst::APP_CHANGE, 'ChangeAppController@doAppChange')->middleware('csrf');
-});
+], CommonConst::HOME, 'HomeController@index')->name(CommonConst::HOME)->middleware('auth');
+
+Route::match([
+    'get',
+    'post'
+], 'regist_tour', 'RegistTourController@index')->middleware('auth');
 
 Route::any('{undefined_route}', function () {
     return view('error', [

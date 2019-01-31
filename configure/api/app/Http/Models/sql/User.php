@@ -8,6 +8,7 @@
 
 namespace App\Http\Models\sql;
 
+use App\Constants\CommonConst;
 use App\Http\Models\UserModel;
 
 class User
@@ -32,5 +33,22 @@ class User
         $user = UserModel::where('user_id', $user_id)->first($ary_colums);
 
         return $user;
+    }
+
+    /**
+     * Lấy thông tin đăng nhập của user
+     *
+     * @param $email
+     * @param $password
+     * @return mixed
+     */
+    public function getLoginUserInfoByEmail($email) {
+        $ary_colums = [
+            'user_id',
+            'password'
+        ];
+        $result = UserModel::where('email', $email)->where('role', CommonConst::ROLE_ADMIN)->first($ary_colums);
+
+        return $result;
     }
 }

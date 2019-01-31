@@ -37,15 +37,16 @@ class Tour
      * @param int $offset
      * @return mixed
      */
-    public function getListDailyTour($limit, $offset = 0) {
+    public function getListTour() {
         $ary_colums = [
-            'tour_id',
             'tour_name',
             'tour_time',
+            'from',
+            'price_promotion',
             'price',
-            'update_datetime'
+            'category_tour_id'
         ];
-        $ary_daily_tours = TourModel::where('category_tour_id','!=', 5)->limit($limit)->offset($offset)->get($ary_colums);
+        $ary_daily_tours = TourModel::all($ary_colums);
         return $ary_daily_tours;
     }
 

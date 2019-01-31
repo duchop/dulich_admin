@@ -35,4 +35,22 @@ class Transportation
         $list_transportation = TransportationModel::where('transportation_category_id', $category_id)->paginate($limit);
         return $list_transportation;
     }
+
+    /**
+     * Lấy danh sánh phương tiện
+     *
+     * @return TransportationModel[]|\Illuminate\Database\Eloquent\Collection
+     */
+    public function getListTransportation() {
+        $ary_data = [
+            'transportation_id',
+            'transportation_category_id',
+            'transportation_name',
+            'address_from',
+            'address_to',
+            'update_datetime'
+        ];
+        $list_transportation = TransportationModel::all($ary_data);
+        return $list_transportation;
+    }
 }

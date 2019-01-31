@@ -35,13 +35,13 @@ class CategoryTour
      * @param int $offset
      * @return mixed
      */
-    public function getListCategoryTour($limit = 0, $offset = 0) {
+    public function getListCategoryTour() {
         $ary_colums = [
             'category_tour_id',
             'category_name',
             'count_tour'
         ];
-        $list_category_tours = CategoryTourModel::limit($limit)->offset($offset)->get($ary_colums);
+        $list_category_tours = CategoryTourModel::all($ary_colums);
 
         return $list_category_tours;
     }

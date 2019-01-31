@@ -23,6 +23,9 @@ class Hotel
         $ary_colums = [
             'hotel_id',
             'hotel_name',
+            'hotel_category_id',
+            'hotel_type',
+            'address',
             'update_datetime'
         ];
         $ary_hotels = HotelModel::limit($limit)->offset($offset)->get($ary_colums);
@@ -51,5 +54,24 @@ class Hotel
     public function getListHotelsByCategoryId($category_hotel_id, $limit = 0) {
         $list_hotels = HotelModel::where('hotel_category_id', $category_hotel_id)->paginate($limit);
         return $list_hotels;
+    }
+
+    /**
+     * lấy danh sách hotel
+     *
+     * @return mixed
+     */
+    public function getListHotels(){
+        $ary_colums = [
+            'hotel_id',
+            'hotel_name',
+            'hotel_category_id',
+            'hotel_type',
+            'address',
+            'update_datetime'
+        ];
+        $ary_hotels = HotelModel::all($ary_colums);
+
+        return $ary_hotels;
     }
 }

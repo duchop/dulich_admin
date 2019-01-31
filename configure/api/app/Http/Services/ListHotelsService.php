@@ -33,15 +33,8 @@ class ListHotelsService extends Service
      */
     public function getData()
     {
-        $ary_request_all = request()->all();
-
-        $category_hotel_id = $ary_request_all['category_hotel_id'];
-
-        // lấy thông tin hiển thị menu
-        $data = parent::getMenuHeaderData();
-
-        // lấy thông tin chi tiết tour
-        $list_hotels = $this->hotel->getListHotelsByCategoryId($category_hotel_id, 1);
+        // lấy thông tin list hotel
+        $list_hotels = $this->hotel->getListHotel(100);
         $data['list_hotels'] = $list_hotels;
         return $data;
     }

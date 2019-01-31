@@ -34,15 +34,8 @@ class ListTransportationService extends Service
      */
     public function getData()
     {
-        $ary_request_all = request()->all();
-
-        $transportation_category_id = $ary_request_all['transportation_category_id'];
-
-        // lấy thông tin hiển thị menu
-        $data = parent::getMenuHeaderData();
-
         // lấy thông tin chi tiết tour
-        $list_transportation = $this->transportation->getListTransportationByCategoryId($transportation_category_id, 3);
+        $list_transportation = $this->transportation->getListTransportation();
         $data['list_transportation'] = $list_transportation;
         return $data;
     }

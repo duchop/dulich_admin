@@ -30,8 +30,20 @@ class HomeController extends Controller
     public function index(Request $request)
     {
         try {
-            return view('index');
+
+            $type = $request->get('type');
+            $data = $this->service->getData($type);
+            $data['type'] = $type;
+
+            if ($type == 'list_hotel') {
+                return view('index')->with($data);
+            } elseif ($type == 'list_transportation') {
+                return view('index')->with($data);
+            } else {
+                return view('index')->with($data);
+            }
         } catch (\Exception $e) {
+            return view('error')->with($data);
         }
     }
 }
